@@ -623,7 +623,8 @@ mod tests {
             .mock_async(|when, then| {
                 when.method(httpmock::Method::POST)
                     .path("/submit")
-                    .json_body_partial(r#"{"gid":"gid-123","trans_type":"saga"}"#);
+                    .json_body_includes(r#"{"gid":"gid-123"}"#)
+                    .json_body_includes(r#"{"trans_type":"saga"}"#);
                 then.status(200).body("SUCCESS");
             })
             .await;

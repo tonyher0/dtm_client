@@ -6,7 +6,7 @@ async fn main() -> dtm_client::Result<()> {
     let redis_url = std::env::var("REDIS_URL").unwrap_or_else(|_| "redis://127.0.0.1/".to_string());
 
     let client = redis::Client::open(redis_url)?;
-    let mut conn = client.get_multiplexed_tokio_connection().await?;
+    let mut conn = client.get_multiplexed_async_connection().await?;
 
     let key = "dtm_client:barrier_example:balance";
     let _: () = redis::cmd("SET")

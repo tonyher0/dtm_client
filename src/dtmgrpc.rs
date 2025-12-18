@@ -224,7 +224,7 @@ where
             message: e.to_string(),
         }
     })?;
-    let codec = tonic::codec::ProstCodec::default();
+    let codec = tonic_prost::ProstCodec::default();
     let response = grpc
         .unary(request, path, codec)
         .await

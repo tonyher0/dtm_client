@@ -1051,9 +1051,9 @@ mod tests {
 
         m_prepare.assert_async().await;
         m_submit.assert_async().await;
-        assert_eq!(m_trans_out.hits_async().await, 0);
-        assert_eq!(m_trans_in.hits_async().await, 1);
-        assert_eq!(m_register.hits_async().await, 1);
+        assert_eq!(m_trans_out.calls_async().await, 0);
+        assert_eq!(m_trans_in.calls_async().await, 1);
+        assert_eq!(m_register.calls_async().await, 1);
 
         Ok(())
     }
